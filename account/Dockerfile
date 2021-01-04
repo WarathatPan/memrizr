@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:1.9.6-alpine3.7 as builder
 
 WORKDIR /go/src/app
 
@@ -23,5 +23,4 @@ WORKDIR /root/
 COPY --from=builder /go/src/app/run .
 
 EXPOSE 8080
-
 CMD ["./run"]
