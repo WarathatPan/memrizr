@@ -7,9 +7,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/WarathatPan/memrizr/model"
-	"github.com/WarathatPan/memrizr/model/apperrors"
-	"github.com/WarathatPan/memrizr/model/mocks"
+	"github.com/WarathatPan/memrizr/account/model"
+	"github.com/WarathatPan/memrizr/account/model/apperrors"
+	"github.com/WarathatPan/memrizr/account/model/mocks"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"

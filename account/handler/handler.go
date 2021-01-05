@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/WarathatPan/memrizr/model"
+	"github.com/WarathatPan/memrizr/account/model"
 	"github.com/gin-gonic/gin"
 )
 
@@ -40,13 +40,6 @@ func NewHandler(c *Config) {
 	g.POST("/image", h.Image)
 	g.DELETE("/image", h.DeleteImage)
 	g.PUT("/details", h.Details)
-}
-
-// Signup handler
-func (h *Handler) Signup(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"hello": "it's signup",
-	})
 }
 
 // Signin handler
