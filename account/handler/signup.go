@@ -2,6 +2,7 @@ package handler
 
 import (
 	"log"
+	"net/http"
 
 	"github.com/WarathatPan/memrizr/account/model"
 	"github.com/WarathatPan/memrizr/account/model/apperrors"
@@ -31,7 +32,8 @@ func (h *Handler) Signup(c *gin.Context) {
 		Password: req.Password,
 	}
 
-	err := h.UserService.Signup(c, u)
+	// create token pair as strings
+	tokens, err := h.TokenService.NewPairFromUser(c, u, "")
 
 	if err != nil {
 		log.Printf("Failed to sign up user: %v\n", err.Error())
@@ -40,4 +42,8 @@ func (h *Handler) Signup(c *gin.Context) {
 		})
 		return
 	}
+
+	c.JSON(http.StatusCreated, gin.H{
+		"tokens": tokens,
+	})
 }
