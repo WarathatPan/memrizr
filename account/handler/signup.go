@@ -33,13 +33,13 @@ func (h *Handler) Signup(c *gin.Context) {
 	}
 
 	// ...data binding and instantiation of User model...
-
-	err := h.UserService.Signup(c, u)
+	ctx := c.Request.Context()
+	err := h.UserService.Signup(ctx, u)
 
 	// ...error handling ...
 
 	// create token pair as strings
-	tokens, err := h.TokenService.NewPairFromUser(c, u, "")
+	tokens, err := h.TokenService.NewPairFromUser(ctx, u, "")
 
 	if err != nil {
 		log.Printf("Failed to sign up user: %v\n", err.Error())
