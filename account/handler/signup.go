@@ -32,6 +32,12 @@ func (h *Handler) Signup(c *gin.Context) {
 		Password: req.Password,
 	}
 
+	// ...data binding and instantiation of User model...
+
+	err := h.UserService.Signup(c, u)
+
+	// ...error handling ...
+
 	// create token pair as strings
 	tokens, err := h.TokenService.NewPairFromUser(c, u, "")
 
