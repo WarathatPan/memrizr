@@ -1,3 +1,3 @@
 # memrizr
 Tutorial on building a Fullstack memorization application
-[dev.to feed](https://dev.to/jacobsngoodwin/09-token-creation-gjh)
+[dev.to feed](https://dev.to/jacobsngoodwin/10-dependency-injection-and-app-demo-1pj5)
