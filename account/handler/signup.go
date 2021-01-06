@@ -32,17 +32,27 @@ func (h *Handler) Signup(c *gin.Context) {
 		Password: req.Password,
 	}
 
-	// ...data binding and instantiation of User model...
 	ctx := c.Request.Context()
 	err := h.UserService.Signup(ctx, u)
 
-	// ...error handling ...
+	if err != nil {
+		log.Printf("Failed to sign up user: %v\n", err.Error())
+		c.JSON(apperrors.Status(err), gin.H{
+			"error": err,
+		})
+		return
+	}
 
 	// create token pair as strings
 	tokens, err := h.TokenService.NewPairFromUser(ctx, u, "")
 
 	if err != nil {
-		log.Printf("Failed to sign up user: %v\n", err.Error())
+		log.Printf("Failed to create tokens for user: %v\n", err.Error())
+
+		// may eventually implement rollback logic here
+		// meaning, if we fail to create tokens after creating a user,
+		// we make sure to clear/delete the created user in the database
+
 		c.JSON(apperrors.Status(err), gin.H{
 			"error": err,
 		})
