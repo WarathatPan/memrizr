@@ -1,3 +1,3 @@
 # memrizr
 Tutorial on building a Fullstack memorization application
-[dev.to feed](https://dev.to/jacobsngoodwin/08-implement-signup-in-service-and-repository-layers-4coe)
+[dev.to feed](https://dev.to/jacobsngoodwin/09-token-creation-gjh)
